@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   CircleUser,
   Menu,
@@ -21,8 +21,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
+    const mobileNavLinkClass = ({ isActive }: { isActive: boolean }) =>
+    cn(
+      "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground",
+      isActive ? "bg-muted text-foreground" : "text-muted-foreground"
+    );
+
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
       <Sheet>
@@ -34,55 +41,37 @@ const Header = () => {
         </SheetTrigger>
         <SheetContent side="left" className="flex flex-col">
           <nav className="grid gap-2 text-lg font-medium">
-            <Link
-              to="#"
+            <NavLink
+              to="/"
               className="flex items-center gap-2 text-lg font-semibold mb-4"
             >
               <ListChecks className="h-6 w-6" />
               <span>Citizen-Issue</span>
-            </Link>
-            <Link
-              to="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
-            >
+            </NavLink>
+            <NavLink to="/" end className={mobileNavLinkClass}>
               <Home className="h-5 w-5" />
               Dashboard
-            </Link>
-            <Link
-              to="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
+            </NavLink>
+            <NavLink to="/map" className={mobileNavLinkClass}>
               <Map className="h-5 w-5" />
               Interactive Map
-            </Link>
-            <Link
-              to="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
+            </NavLink>
+            <NavLink to="/issues" className={mobileNavLinkClass}>
               <ListChecks className="h-5 w-5" />
               Issues
-            </Link>
-            <Link
-              to="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
+            </NavLink>
+            <NavLink to="/analytics" className={mobileNavLinkClass}>
               <BarChart2 className="h-5 w-5" />
               Analytics
-            </Link>
-            <Link
-              to="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
+            </NavLink>
+            <NavLink to="/users" className={mobileNavLinkClass}>
               <Users className="h-5 w-5" />
               Users
-            </Link>
-            <Link
-              to="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
+            </NavLink>
+            <NavLink to="/settings" className={mobileNavLinkClass}>
               <Settings className="h-5 w-5" />
               Settings
-            </Link>
+            </NavLink>
           </nav>
         </SheetContent>
       </Sheet>
