@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import AchievementCard from "@/components/civix/AchievementCard";
+import Header from "@/components/civix/Header";
+import Footer from "@/components/civix/Footer";
 import {
   BookUser,
   ClipboardList,
   Trophy,
   MessageSquare,
-  User,
   Users,
   PenSquare,
   Shield,
@@ -14,8 +15,9 @@ import {
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-12">
-      <main className="w-full max-w-md p-6 space-y-6">
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      <main className="w-full max-w-md mx-auto p-6 space-y-6 pt-20 pb-20">
         {/* Greeting */}
         <section className="text-center">
           <h1 className="text-3xl font-bold text-gray-800">Hello Sir,</h1>
@@ -84,19 +86,8 @@ const Index = () => {
             />
           </div>
         </section>
-
-        {/* Settings/Profile Button */}
-        <section className="pt-4">
-          <Link to="/settings" className="w-full">
-            <Button
-              variant="outline"
-              className="w-full h-14 text-lg border-gray-300 bg-white hover:bg-gradient-to-r hover:from-purple-500 hover:to-indigo-600 hover:text-white"
-            >
-              <User className="mr-2 h-5 w-5" /> Settings & Profile
-            </Button>
-          </Link>
-        </section>
       </main>
+      <Footer />
     </div>
   );
 };
