@@ -1,16 +1,15 @@
-import BottomNav from "@/components/civix/BottomNav";
+import DashboardLayout from "@/components/civix/DashboardLayout";
 import Header from "@/components/civix/Header";
 
 const Leaderboard = () => {
   return (
-    <div className="flex min-h-screen flex-col bg-gray-50 pb-20">
+    <DashboardLayout>
       <Header />
-      <main className="flex-1 p-4">
-        <h2 className="mb-4 text-lg font-bold">Leader Board</h2>
+      <main className="p-4 md:p-6">
+        <h2 className="mb-4 text-lg font-bold md:text-2xl">Leader Board</h2>
         <p className="text-center text-gray-500">The leader board will be displayed here.</p>
       </main>
-      <BottomNav />
-    </div>
+    </DashboardLayout>
   );
 };
 

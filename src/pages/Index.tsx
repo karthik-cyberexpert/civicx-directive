@@ -1,4 +1,4 @@
-import BottomNav from "@/components/civix/BottomNav";
+import DashboardLayout from "@/components/civix/DashboardLayout";
 import NavOptionCard from "@/components/civix/NavOptionCard";
 import AchievementsToggle from "@/components/civix/AchievementsToggle";
 import { Button } from "@/components/ui/button";
@@ -6,9 +6,9 @@ import { Settings, BookUser, ClipboardList, Trophy } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen flex-col bg-gray-50 pb-20">
-      {/* Custom Header */}
-      <header className="flex items-center justify-between border-b p-3">
+    <DashboardLayout>
+      {/* Mobile Header */}
+      <header className="flex items-center justify-between border-b p-3 md:hidden">
         <div className="w-10" /> {/* Spacer */}
         <h1 className="text-center text-xl font-bold text-gray-800">CIVIX</h1>
         <Button variant="ghost" size="icon">
@@ -16,9 +16,15 @@ const Index = () => {
         </Button>
       </header>
 
-      <main className="flex-1 space-y-4 overflow-y-auto p-3">
+      <main className="space-y-4 overflow-y-auto p-3 md:p-6">
+        {/* Desktop Header */}
+        <header className="hidden md:block mb-6">
+            <h2 className="text-3xl font-bold text-gray-800">Dashboard</h2>
+            <p className="text-gray-500">Welcome back, Officer R. Kumar.</p>
+        </header>
+
         {/* Encouraging Prompt */}
-        <section className="text-center">
+        <section className="text-center md:text-left">
           <p className="italic text-gray-600">
             "Let's build a better tomorrow for our citizens, one resolved issue
             at a time."
@@ -51,9 +57,7 @@ const Index = () => {
           <AchievementsToggle />
         </section>
       </main>
-
-      <BottomNav />
-    </div>
+    </DashboardLayout>
   );
 };
 
