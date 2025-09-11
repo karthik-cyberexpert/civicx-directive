@@ -18,7 +18,7 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="w-full max-w-md mx-auto bg-white">
         <Header />
-        <main className="p-6 space-y-6">
+        <main className="p-6 space-y-6 animate-in fade-in duration-500">
           {/* Greeting */}
           <section className="text-center">
             <h1 className="text-3xl font-bold text-gray-800">Hello Sir,</h1>
