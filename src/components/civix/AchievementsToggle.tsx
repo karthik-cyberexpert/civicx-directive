@@ -9,10 +9,25 @@ const AchievementsToggle = () => {
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="reporter" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="reporter" className="hover:bg-accent">Reporter</TabsTrigger>
-            <TabsTrigger value="heroes" className="hover:bg-accent">Heroes</TabsTrigger>
-            <TabsTrigger value="feedbacks" className="hover:bg-accent">Feedbacks</TabsTrigger>
+          <TabsList className="flex h-auto w-full flex-col items-stretch gap-1">
+            <TabsTrigger
+              value="reporter"
+              className="justify-start hover:bg-blue-100 hover:text-blue-800 data-[state=active]:bg-purple-600 data-[state=active]:text-white dark:hover:bg-blue-900/30 dark:hover:text-blue-200"
+            >
+              Reporter
+            </TabsTrigger>
+            <TabsTrigger
+              value="heroes"
+              className="justify-start hover:bg-blue-100 hover:text-blue-800 data-[state=active]:bg-purple-600 data-[state=active]:text-white dark:hover:bg-blue-900/30 dark:hover:text-blue-200"
+            >
+              Heroes
+            </TabsTrigger>
+            <TabsTrigger
+              value="feedbacks"
+              className="justify-start hover:bg-blue-100 hover:text-blue-800 data-[state=active]:bg-purple-600 data-[state=active]:text-white dark:hover:bg-blue-900/30 dark:hover:text-blue-200"
+            >
+              Feedbacks
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="reporter">
             <div className="mt-4 text-center text-sm text-gray-500">
