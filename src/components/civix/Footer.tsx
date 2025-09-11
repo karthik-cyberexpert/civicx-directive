@@ -13,7 +13,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-white border-t p-2 flex justify-around items-center z-10">
+    <footer className="bg-white border-t p-2 flex justify-around items-center">
       <Link to="/settings" className="text-center">
         <Button variant="ghost" className="flex flex-col h-auto p-2 items-center">
           <Settings className="h-6 w-6 text-gray-600" />
