@@ -38,7 +38,7 @@ const Index = () => {
         </section>
 
         {/* Navigation Options */}
-        <section className="grid grid-cols-1 gap-3 md:grid-cols-3">
+        <section className="flex flex-col gap-3">
           <NavOptionCard title="My Records" icon={BookUser} href="/records" />
           <NavOptionCard
             title="Reported Issues"
