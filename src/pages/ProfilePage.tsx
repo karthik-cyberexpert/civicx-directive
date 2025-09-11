@@ -56,7 +56,9 @@ const ProfilePage = () => {
               <span className="text-muted-foreground">Country</span>
               <span className="font-medium">{user.country}</span>
             </div>
-            <Button className="w-full mt-6">Edit Profile</Button>
+            <Link to="/profile/edit" className="block w-full pt-6">
+              <Button className="w-full">Edit Profile</Button>
+            </Link>
           </CardContent>
         </Card>
       </main>
