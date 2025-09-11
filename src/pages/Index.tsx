@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "@/components/do-dashboard/Header";
 import Sidebar from "@/components/do-dashboard/Sidebar";
 import StatCard from "@/components/do-dashboard/StatCard";
@@ -8,16 +9,26 @@ import {
   AlertCircle,
   ArrowUpCircle,
 } from "lucide-react";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 const Index = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-white">
       <Sidebar />
+
+      <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
+        <SheetContent side="left" className="w-72 p-0">
+          <Sidebar className="!flex h-full border-r-0" />
+        </SheetContent>
+      </Sheet>
+
       <div className="flex flex-1 flex-col">
-        <Header />
-        <main className="flex-1 p-4 md:p-6">
+        <Header onMenuClick={() => setIsSidebarOpen(true)} />
+        <main className="flex-1 overflow-y-auto p-4 md:p-6">
           {/* Quick Stats */}
-          <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <StatCard
               title="Pending Issues"
               value="42"

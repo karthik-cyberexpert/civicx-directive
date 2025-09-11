@@ -8,6 +8,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Bar, BarChart as RechartsBarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { cn } from "@/lib/utils";
 
 const chartData = [
   { month: "Jan", resolved: 86 },
@@ -18,10 +19,14 @@ const chartData = [
   { month: "Jun", resolved: 93 },
 ];
 
-const Sidebar = () => {
+interface SidebarProps {
+  className?: string;
+}
+
+const Sidebar = ({ className }: SidebarProps) => {
   return (
-    <aside className="hidden w-72 flex-col border-r bg-gray-50 p-4 md:flex">
-      <div className="flex-grow">
+    <aside className={cn("hidden w-72 flex-col border-r bg-gray-50 p-4 md:flex", className)}>
+      <div className="flex-grow overflow-y-auto">
         <h2 className="mb-4 text-lg font-semibold text-gray-700">
           Analytics & Reports
         </h2>
@@ -74,7 +79,7 @@ const Sidebar = () => {
           </CardContent>
         </Card>
       </div>
-      <div className="mt-auto">
+      <div className="mt-auto flex-shrink-0 pt-4">
         <div className="flex items-center gap-3">
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" alt="@officer" />
