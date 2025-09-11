@@ -15,13 +15,13 @@ const Index = () => {
   return (
     <div className="flex min-h-screen flex-col bg-gray-50 pb-20">
       <Header />
-      <main className="flex-1 space-y-6 overflow-y-auto p-4">
+      <main className="flex-1 space-y-4 overflow-y-auto p-3">
         {/* Quick Stats */}
         <section>
           <h2 className="mb-2 text-sm font-semibold text-gray-600">
             Quick Stats
           </h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
             <StatCard
               title="Pending Issues"
               value="42"
