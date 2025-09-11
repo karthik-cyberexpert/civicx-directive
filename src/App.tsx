@@ -7,6 +7,10 @@ import Index from "./pages/Index";
 import ProfilePage from "./pages/ProfilePage";
 import SettingsPage from "./pages/SettingsPage";
 import EditProfilePage from "./pages/EditProfilePage";
+import LanguageSettingsPage from "./pages/settings/LanguageSettingsPage";
+import NotificationSettingsPage from "./pages/settings/NotificationSettingsPage";
+import PasswordSettingsPage from "./pages/settings/PasswordSettingsPage";
+import HelpPage from "./pages/settings/HelpPage";
 import { UserProvider } from "./context/UserContext";
 
 const queryClient = new QueryClient();
@@ -23,6 +27,10 @@ const App = () => (
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
+            <Route path="/settings/language" element={<LanguageSettingsPage />} />
+            <Route path="/settings/notifications" element={<NotificationSettingsPage />} />
+            <Route path="/settings/password" element={<PasswordSettingsPage />} />
+            <Route path="/settings/help" element={<HelpPage />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
