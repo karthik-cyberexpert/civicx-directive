@@ -17,22 +17,34 @@ const SettingsPage = () => {
         </header>
         <main className="p-6">
           <div className="space-y-4">
-            <Link to="/settings/language" className="flex items-center justify-between py-2">
+            <Link 
+              to="/settings/language" 
+              className="flex items-center justify-between py-3 px-2 rounded-md transition-all duration-200 hover:bg-gray-100 hover:translate-x-1"
+            >
               <span className="text-lg font-medium">Language</span>
               <ChevronRight className="h-5 w-5 text-gray-500" />
             </Link>
             <Separator />
-            <Link to="/settings/notifications" className="flex items-center justify-between py-2">
+            <Link 
+              to="/settings/notifications" 
+              className="flex items-center justify-between py-3 px-2 rounded-md transition-all duration-200 hover:bg-gray-100 hover:translate-x-1"
+            >
               <span className="text-lg font-medium">Notifications</span>
               <ChevronRight className="h-5 w-5 text-gray-500" />
             </Link>
             <Separator />
-            <Link to="/settings/password" className="flex items-center justify-between py-2">
+            <Link 
+              to="/settings/password" 
+              className="flex items-center justify-between py-3 px-2 rounded-md transition-all duration-200 hover:bg-gray-100 hover:translate-x-1"
+            >
               <span className="text-lg font-medium">Password</span>
               <ChevronRight className="h-5 w-5 text-gray-500" />
             </Link>
             <Separator />
-            <Link to="/settings/help" className="flex items-center justify-between py-2">
+            <Link 
+              to="/settings/help" 
+              className="flex items-center justify-between py-3 px-2 rounded-md transition-all duration-200 hover:bg-gray-100 hover:translate-x-1"
+            >
               <span className="text-lg font-medium">Help</span>
               <ChevronRight className="h-5 w-5 text-gray-500" />
             </Link>
