@@ -2,12 +2,14 @@ import { Settings, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { showSuccess } from "@/utils/toast";
+import { useUser } from "@/context/UserContext"; // Import useUser
 
 const Footer = () => {
   const navigate = useNavigate();
+  const { logout } = useUser(); // Use the logout function
 
   const handleLogout = () => {
-    // In a real app, you would clear the user's session here.
+    logout(); // Call the logout function from context
     showSuccess("You have been logged out successfully.");
     navigate("/");
   };

@@ -11,6 +11,11 @@ import LanguageSettingsPage from "./pages/settings/LanguageSettingsPage";
 import NotificationSettingsPage from "./pages/settings/NotificationSettingsPage";
 import PasswordSettingsPage from "./pages/settings/PasswordSettingsPage";
 import HelpPage from "./pages/settings/HelpPage";
+import IssuesPage from "./pages/IssuesPage"; // New import
+import LeaderboardPage from "./pages/LeaderboardPage"; // New import
+import ReportersPage from "./pages/ReportersPage"; // New import
+import RecordsPage from "./pages/RecordsPage"; // New import
+import AchievementsPage from "./pages/AchievementsPage"; // New import
 import { UserProvider } from "./context/UserContext";
 
 const queryClient = new QueryClient();
@@ -31,6 +36,11 @@ const App = () => (
             <Route path="/settings/notifications" element={<NotificationSettingsPage />} />
             <Route path="/settings/password" element={<PasswordSettingsPage />} />
             <Route path="/settings/help" element={<HelpPage />} />
+            <Route path="/issues" element={<IssuesPage />} /> {/* New route */}
+            <Route path="/leaderboard" element={<LeaderboardPage />} /> {/* New route */}
+            <Route path="/reporters" element={<ReportersPage />} /> {/* New route */}
+            <Route path="/records" element={<RecordsPage />} /> {/* New route */}
+            <Route path="/achievements" element={<AchievementsPage />} /> {/* New route */}
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

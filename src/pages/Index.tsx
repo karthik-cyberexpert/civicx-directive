@@ -40,7 +40,7 @@ const Index = () => {
                 <Trophy className="mr-2 h-5 w-5" /> Leaderboard
               </Button>
             </Link>
-            <Link to="/leaderboard" className="w-full">
+            <Link to="/reporters" className="w-full"> {/* Updated link */}
               <Button
                 variant="outline"
                 className="w-full h-14 text-lg border-gray-300 bg-white hover:bg-gradient-to-r hover:from-purple-500 hover:to-indigo-600 hover:text-white"
