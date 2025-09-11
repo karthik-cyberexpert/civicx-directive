@@ -11,10 +11,10 @@ interface NavOptionCardProps {
 const NavOptionCard = ({ title, icon: Icon, href }: NavOptionCardProps) => {
   return (
     <Link to={href} className="block">
-      <Card className="h-full transition-colors hover:bg-gray-100">
-        <CardContent className="flex h-full flex-col items-center justify-center gap-2 p-3 text-center">
-          <Icon className="h-7 w-7 text-primary" />
-          <p className="text-xs font-medium">{title}</p>
+      <Card className="transition-colors hover:bg-gray-100">
+        <CardContent className="flex items-center gap-4 p-4">
+          <Icon className="h-8 w-8 text-primary" />
+          <p className="text-base font-semibold">{title}</p>
         </CardContent>
       </Card>
     </Link>
