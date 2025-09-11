@@ -16,7 +16,7 @@ const Index = () => {
         </Button>
       </header>
 
-      <main className="flex-1 space-y-5 overflow-y-auto p-4">
+      <main className="flex-1 space-y-4 overflow-y-auto p-3">
         {/* Encouraging Prompt */}
         <section className="text-center">
           <p className="italic text-gray-600">
