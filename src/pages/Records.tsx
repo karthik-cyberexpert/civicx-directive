@@ -1,14 +1,43 @@
 import DashboardLayout from "@/components/civix/DashboardLayout";
-import Header from "@/components/civix/Header";
+import PageLayout from "@/components/civix/PageLayout";
+import ReportCard from "@/components/civix/ReportCard";
+
+const mockRecords = [
+  {
+    id: 1,
+    title: "Pothole on Main Street",
+    description: "Large pothole causing traffic issues.",
+    status: "Approved",
+    date: "1/15/2024",
+    progress: 75,
+  },
+  {
+    id: 2,
+    title: "Broken Streetlight",
+    description: "Streetlight on Elm St. is flickering.",
+    status: "Pending",
+    date: "1/18/2024",
+    progress: 25,
+  },
+];
 
 const Records = () => {
   return (
     <DashboardLayout>
-      <Header />
-      <main className="p-4 md:p-6">
-        <h2 className="mb-4 text-lg font-bold md:text-2xl">My Records</h2>
-        <p className="text-center text-gray-500">Your records will be displayed here.</p>
-      </main>
+      <PageLayout title="My Reports" subtitle="Track your submissions">
+        <div className="space-y-4">
+          {mockRecords.map((record) => (
+            <ReportCard
+              key={record.id}
+              title={record.title}
+              description={record.description}
+              status={record.status as "Approved" | "Pending"}
+              date={record.date}
+              progress={record.progress}
+            />
+          ))}
+        </div>
+      </PageLayout>
     </DashboardLayout>
   );
 };
