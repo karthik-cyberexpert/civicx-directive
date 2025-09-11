@@ -8,6 +8,8 @@ import NotFound from "./pages/NotFound";
 import Issues from "./pages/Issues";
 import AchievementsPage from "./pages/AchievementsPage";
 import Settings from "./pages/Settings";
+import Records from "./pages/Records";
+import Leaderboard from "./pages/Leaderboard";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +24,8 @@ const App = () => (
           <Route path="/issues" element={<Issues />} />
           <Route path="/achievements" element={<AchievementsPage />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/records" element={<Records />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
