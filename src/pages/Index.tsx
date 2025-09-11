@@ -30,7 +30,7 @@ const Index = () => {
           <Link to="/leaderboard" className="w-full">
             <Button
               variant="outline"
-              className="w-full h-14 text-lg border-gray-300 bg-white"
+              className="w-full h-14 text-lg border-gray-300 bg-white hover:bg-blue-500 hover:text-white"
             >
               <Trophy className="mr-2 h-5 w-5" /> Leaderboard
             </Button>
@@ -38,7 +38,7 @@ const Index = () => {
           <Link to="/leaderboard" className="w-full">
             <Button
               variant="outline"
-              className="w-full h-14 text-lg border-gray-300 bg-white"
+              className="w-full h-14 text-lg border-gray-300 bg-white hover:bg-blue-500 hover:text-white"
             >
               <Users className="mr-2 h-5 w-5" /> Reporters
             </Button>
@@ -69,7 +69,7 @@ const Index = () => {
           <Link to="/settings" className="w-full">
             <Button
               variant="outline"
-              className="w-full h-14 text-lg border-gray-300 bg-white"
+              className="w-full h-14 text-lg border-gray-300 bg-white hover:bg-blue-500 hover:text-white"
             >
               <User className="mr-2 h-5 w-5" /> Settings & Profile
             </Button>
