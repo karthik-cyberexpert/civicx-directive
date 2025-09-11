@@ -5,10 +5,9 @@ import {
   BookUser,
   ClipboardList,
   Trophy,
-  Medal,
-  Star,
   MessageSquare,
   User,
+  Users,
 } from "lucide-react";
 
 const Index = () => {
@@ -25,15 +24,7 @@ const Index = () => {
         <section className="flex flex-col gap-3">
           <Link to="/issues" className="w-full">
             <Button className="w-full h-14 text-lg bg-gradient-to-r from-purple-500 to-indigo-600 text-white shadow-lg hover:shadow-xl transition-shadow">
-              <ClipboardList className="mr-2 h-5 w-5" /> Reported Issues
-            </Button>
-          </Link>
-          <Link to="/records" className="w-full">
-            <Button
-              variant="outline"
-              className="w-full h-14 text-lg border-gray-300 bg-white"
-            >
-              <BookUser className="mr-2 h-5 w-5" /> My Records
+              <ClipboardList className="mr-2 h-5 w-5" /> Issues received
             </Button>
           </Link>
           <Link to="/leaderboard" className="w-full">
@@ -41,7 +32,15 @@ const Index = () => {
               variant="outline"
               className="w-full h-14 text-lg border-gray-300 bg-white"
             >
-              <Trophy className="mr-2 h-5 w-5" /> Leader Board
+              <Trophy className="mr-2 h-5 w-5" /> Leaderboard
+            </Button>
+          </Link>
+          <Link to="/leaderboard" className="w-full">
+            <Button
+              variant="outline"
+              className="w-full h-14 text-lg border-gray-300 bg-white"
+            >
+              <Users className="mr-2 h-5 w-5" /> Reporters
             </Button>
           </Link>
         </section>
@@ -51,15 +50,14 @@ const Index = () => {
           <h2 className="text-xl font-bold text-center text-gray-700 mb-4">
             Your Achievements
           </h2>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             <AchievementCard
-              title="Reporter"
-              icon={Medal}
-              href="/achievements"
+              title="My Records"
+              icon={BookUser}
+              href="/records"
             />
-            <AchievementCard title="Heroes" icon={Star} href="/achievements" />
             <AchievementCard
-              title="Feedbacks"
+              title="Feedback"
               icon={MessageSquare}
               href="/achievements"
             />
