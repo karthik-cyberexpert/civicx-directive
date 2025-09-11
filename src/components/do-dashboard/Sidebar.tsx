@@ -30,9 +30,9 @@ const Sidebar = () => {
             <CardTitle className="text-base">Resolution Rate</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-40">
+            <ChartContainer config={{}} className="h-40 w-full">
               <ResponsiveContainer width="100%" height="100%">
-                <RechartsBarChart data={chartData}>
+                <RechartsBarChart accessibilityLayer data={chartData}>
                   <XAxis
                     dataKey="month"
                     stroke="#888888"
@@ -49,7 +49,7 @@ const Sidebar = () => {
                   />
                   <ChartTooltip
                     cursor={false}
-                    content={<ChartTooltipContent />}
+                    content={<ChartTooltipContent hideLabel />}
                   />
                   <Bar
                     dataKey="resolved"
@@ -58,7 +58,7 @@ const Sidebar = () => {
                   />
                 </RechartsBarChart>
               </ResponsiveContainer>
-            </div>
+            </ChartContainer>
           </CardContent>
         </Card>
         <Card>
