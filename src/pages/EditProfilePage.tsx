@@ -21,6 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { showSuccess } from "@/utils/toast";
+import { useUser } from "@/context/UserContext";
 
 const profileFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -32,24 +33,16 @@ const profileFormSchema = z.object({
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
-// Mock current user data
-const currentUser = {
-  name: "John Doe",
-  email: "john.doe@example.com",
-  gender: "Male" as const,
-  state: "California",
-  country: "USA",
-};
-
 const EditProfilePage = () => {
   const navigate = useNavigate();
+  const { user, updateUser } = useUser();
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
-    defaultValues: currentUser,
+    defaultValues: user,
   });
 
   const onSubmit = (data: ProfileFormValues) => {
-    console.log("Profile updated:", data);
+    updateUser(data);
     showSuccess("Profile updated successfully!");
     navigate("/profile");
   };

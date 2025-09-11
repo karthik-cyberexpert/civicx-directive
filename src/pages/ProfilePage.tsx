@@ -4,16 +4,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { useUser } from "@/context/UserContext";
 
 const ProfilePage = () => {
-  const user = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    gender: "Male",
-    state: "California",
-    country: "USA",
-    avatarUrl: "", // Placeholder for avatar image
-  };
+  const { user } = useUser();
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">
