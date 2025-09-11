@@ -8,11 +8,13 @@ import {
   MessageSquare,
   User,
   Users,
+  PenSquare,
+  Shield,
 } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-12">
       <main className="w-full max-w-md p-6 space-y-6">
         {/* Greeting */}
         <section className="text-center">
@@ -59,6 +61,25 @@ const Index = () => {
             <AchievementCard
               title="Feedback"
               icon={MessageSquare}
+              href="/achievements"
+            />
+          </div>
+        </section>
+
+        {/* Civix Team Section */}
+        <section>
+          <h2 className="text-xl font-bold text-center text-gray-700 mb-4">
+            Civix Team
+          </h2>
+          <div className="grid grid-cols-2 gap-4">
+            <AchievementCard
+              title="Reporter"
+              icon={PenSquare}
+              href="/leaderboard"
+            />
+            <AchievementCard
+              title="Heroes"
+              icon={Shield}
               href="/achievements"
             />
           </div>
