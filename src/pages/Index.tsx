@@ -78,12 +78,12 @@ const Index = () => {
               <AchievementCard
                 title="Reporter"
                 icon={PenSquare}
-                href="/leaderboard"
+                href="/civix-reporter"
               />
               <AchievementCard
                 title="Heroes"
                 icon={Shield}
-                href="/achievements"
+                href="/civix-heroes"
               />
             </div>
           </section>

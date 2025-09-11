@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,20 +13,47 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
+const weekData = [
   { name: "Week 1", issuesCleared: 12 },
   { name: "Week 2", issuesCleared: 19 },
   { name: "Week 3", issuesCleared: 8 },
   { name: "Week 4", issuesCleared: 25 },
-  { name: "Month 1", issuesCleared: 64 },
-  { name: "Month 2", issuesCleared: 78 },
-  { name: "Month 3", issuesCleared: 55 },
-  { name: "Year 2022", issuesCleared: 500 },
-  { name: "Year 2023", issuesCleared: 620 },
-  { name: "Year 2024", issuesCleared: 300 }, // Partial year
 ];
 
+const monthData = [
+  { name: "Jan", issuesCleared: 64 },
+  { name: "Feb", issuesCleared: 78 },
+  { name: "Mar", issuesCleared: 55 },
+  { name: "Apr", issuesCleared: 89 },
+  { name: "May", issuesCleared: 102 },
+  { name: "Jun", issuesCleared: 95 },
+];
+
+const yearData = [
+  { name: "2022", issuesCleared: 500 },
+  { name: "2023", issuesCleared: 620 },
+  { name: "2024", issuesCleared: 300 },
+];
+
+type FilterType = "week" | "month" | "year";
+
 const RecordsPage = () => {
+  const [filter, setFilter] = useState<FilterType>("week");
+
+  const getData = () => {
+    switch (filter) {
+      case "month":
+        return monthData;
+      case "year":
+        return yearData;
+      case "week":
+      default:
+        return weekData;
+    }
+  };
+
+  const data = getData();
+
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
@@ -43,6 +71,26 @@ const RecordsPage = () => {
               <CardTitle className="text-lg">Issues Cleared Overview</CardTitle>
             </CardHeader>
             <CardContent>
+              <div className="flex justify-center gap-2 mb-4">
+                <Button
+                  variant={filter === "week" ? "default" : "outline"}
+                  onClick={() => setFilter("week")}
+                >
+                  Week
+                </Button>
+                <Button
+                  variant={filter === "month" ? "default" : "outline"}
+                  onClick={() => setFilter("month")}
+                >
+                  Month
+                </Button>
+                <Button
+                  variant={filter === "year" ? "default" : "outline"}
+                  onClick={() => setFilter("year")}
+                >
+                  Year
+                </Button>
+              </div>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart
@@ -55,7 +103,7 @@ const RecordsPage = () => {
                     }}
                   >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" angle={-45} textAnchor="end" height={60} interval={0} />
+                    <XAxis dataKey="name" interval={0} />
                     <YAxis />
                     <Tooltip />
                     <Bar dataKey="issuesCleared" fill="#8884d8" />
