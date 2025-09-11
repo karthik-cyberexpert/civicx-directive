@@ -1,4 +1,3 @@
-import Sidebar from "./Sidebar";
 import BottomNav from "./BottomNav";
 
 interface DashboardLayoutProps {
@@ -8,8 +7,7 @@ interface DashboardLayoutProps {
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <div className="flex min-h-screen bg-gray-50">
-      <Sidebar />
-      <div className="w-full pb-16 md:pb-0">
+      <div className="w-full pb-16">
         {children}
       </div>
       <BottomNav />
