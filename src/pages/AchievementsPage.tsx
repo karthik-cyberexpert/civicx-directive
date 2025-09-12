@@ -57,41 +57,40 @@ const AchievementsPage = () => {
   const sortedFeedback = [...sampleFeedback].sort((a, b) => b.rating - a.rating);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-        <header className="flex items-center p-4 border-b">
-          <Link to="/">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-6 w-6" />
-            </Button>
-          </Link>
-          <h1 className="text-xl font-bold ml-2">Feedback</h1>
-        </header>
-        <main className="p-6 space-y-4">
-          {sortedFeedback.map((feedback) => (
-            <Card key={feedback.id} className="shadow-sm">
-              <CardContent className="p-4 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10">
-                      <AvatarFallback>{feedback.citizenName.split(" ").map((n) => n[0]).join("")}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h3 className="font-semibold text-base">{feedback.citizenName}</h3>
-                      <div className="flex items-center mt-0.5">
-                        {renderStars(feedback.rating)}
-                      </div>
+    <>
+      <header className="flex items-center p-4 border-b">
+        <Link to="/">
+          <Button variant="ghost" size="icon">
+            <ArrowLeft className="h-6 w-6" />
+          </Button>
+        </Link>
+        <h1 className="text-xl font-bold ml-2">Feedback</h1>
+      </header>
+      <main className="p-6 space-y-4">
+        {sortedFeedback.map((feedback) => (
+          <Card key={feedback.id} className="shadow-sm">
+            <CardContent className="p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-10 w-10">
+                    <AvatarFallback>{feedback.citizenName.split(" ").map((n) => n[0]).join("")}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <h3 className="font-semibold text-base">{feedback.citizenName}</h3>
+                    <div className="flex items-center mt-0.5">
+                      {renderStars(feedback.rating)}
                     </div>
                   </div>
-                  <span className="text-sm text-gray-500">{feedback.date}</span>
                 </div>
-                <p className="text-gray-700 text-sm">{feedback.comment}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </main>
-      </div>
-    </div>
+                <span className="text-sm text-gray-500">{feedback.date}</span>
+              </div>
+              <p className="text-gray-700 text-sm">{feedback.comment}</p>
+            </CardContent>
+          </Card>
+        ))}
+        <div className="pb-20 md:pb-0" />
+      </main>
+    </>
   );
 };
 

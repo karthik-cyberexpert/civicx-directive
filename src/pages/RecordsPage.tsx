@@ -104,89 +104,88 @@ const RecordsPage = () => {
   const currentFilterLabel = filter.charAt(0).toUpperCase() + filter.slice(1);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-        <header className="flex items-center p-4 border-b">
-          <Link to="/">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-6 w-6" />
-            </Button>
-          </Link>
-          <h1 className="text-xl font-bold ml-2">My Records</h1>
-        </header>
-        <main className="p-6 space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Add New Record for {currentFilterLabel}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:flex md:items-end md:gap-4 md:space-y-0">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem className="flex-1">
-                        <FormLabel>{currentFilterLabel} Label</FormLabel>
-                        <FormControl>
-                          <Input placeholder={placeholderText} {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="issuesCleared"
-                    render={({ field }) => (
-                      <FormItem className="flex-1">
-                        <FormLabel>Issues Cleared</FormLabel>
-                        <FormControl>
-                          <Input type="number" placeholder="e.g., 15" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit">Add Record</Button>
-                </form>
-              </Form>
-            </CardContent>
-          </Card>
+    <>
+      <header className="flex items-center p-4 border-b">
+        <Link to="/">
+          <Button variant="ghost" size="icon">
+            <ArrowLeft className="h-6 w-6" />
+          </Button>
+        </Link>
+        <h1 className="text-xl font-bold ml-2">My Records</h1>
+      </header>
+      <main className="p-6 space-y-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>Add New Record for {currentFilterLabel}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:flex md:items-end md:gap-4 md:space-y-0">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem className="flex-1">
+                      <FormLabel>{currentFilterLabel} Label</FormLabel>
+                      <FormControl>
+                        <Input placeholder={placeholderText} {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="issuesCleared"
+                  render={({ field }) => (
+                    <FormItem className="flex-1">
+                      <FormLabel>Issues Cleared</FormLabel>
+                      <FormControl>
+                        <Input type="number" placeholder="e.g., 15" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit">Add Record</Button>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Issues Cleared Overview</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex justify-center gap-2 mb-4">
-                <Button variant={filter === "day" ? "default" : "outline"} onClick={() => setFilter("day")}>Day</Button>
-                <Button variant={filter === "week" ? "default" : "outline"} onClick={() => setFilter("week")}>Week</Button>
-                <Button variant={filter === "month" ? "default" : "outline"} onClick={() => setFilter("month")}>Month</Button>
-                <Button variant={filter === "year" ? "default" : "outline"} onClick={() => setFilter("year")}>Year</Button>
-              </div>
-              <div className="h-64">
-                {data.length > 0 ? (
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={data} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" interval={0} />
-                      <YAxis />
-                      <Tooltip />
-                      <Bar dataKey="issuesCleared" fill="#8884d8" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <div className="flex items-center justify-center h-full text-gray-500">
-                    No records found for this period. Add one above to get started!
-                  </div>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        </main>
-      </div>
-    </div>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">Issues Cleared Overview</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex justify-center gap-2 mb-4">
+              <Button variant={filter === "day" ? "default" : "outline"} onClick={() => setFilter("day")}>Day</Button>
+              <Button variant={filter === "week" ? "default" : "outline"} onClick={() => setFilter("week")}>Week</Button>
+              <Button variant={filter === "month" ? "default" : "outline"} onClick={() => setFilter("month")}>Month</Button>
+              <Button variant={filter === "year" ? "default" : "outline"} onClick={() => setFilter("year")}>Year</Button>
+            </div>
+            <div className="h-64">
+              {data.length > 0 ? (
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={data} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" interval={0} />
+                    <YAxis />
+                    <Tooltip />
+                    <Bar dataKey="issuesCleared" fill="#8884d8" />
+                  </BarChart>
+                </ResponsiveContainer>
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-500">
+                  No records found for this period. Add one above to get started!
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+        <div className="pb-20 md:pb-0" />
+      </main>
+    </>
   );
 };
 

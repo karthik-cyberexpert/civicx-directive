@@ -16,8 +16,9 @@ import ReportersPage from "./pages/ReportersPage";
 import RecordsPage from "./pages/RecordsPage";
 import AchievementsPage from "./pages/AchievementsPage";
 import CivixHeroesPage from "./pages/CivixHeroesPage";
-import SolvedIssuesPage from "./pages/SolvedIssuesPage"; // New import
+import SolvedIssuesPage from "./pages/SolvedIssuesPage";
 import { UserProvider } from "./context/UserContext";
+import Layout from "./components/civix/Layout";
 
 const queryClient = new QueryClient();
 
@@ -29,20 +30,22 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/profile/edit" element={<EditProfilePage />} />
-            <Route path="/settings/language" element={<LanguageSettingsPage />} />
-            <Route path="/settings/notifications" element={<NotificationSettingsPage />} />
-            <Route path="/settings/password" element={<PasswordSettingsPage />} />
-            <Route path="/settings/help" element={<HelpPage />} />
-            <Route path="/leaderboard" element={<LeaderboardPage />} />
-            <Route path="/reporters" element={<ReportersPage />} />
-            <Route path="/records" element={<RecordsPage />} />
-            <Route path="/achievements" element={<AchievementsPage />} />
-            <Route path="/civix-heroes" element={<CivixHeroesPage />} />
-            <Route path="/solved-issues" element={<SolvedIssuesPage />} /> {/* New route */}
+            <Route element={<Layout />}>
+              <Route path="/" element={<Index />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/profile/edit" element={<EditProfilePage />} />
+              <Route path="/settings/language" element={<LanguageSettingsPage />} />
+              <Route path="/settings/notifications" element={<NotificationSettingsPage />} />
+              <Route path="/settings/password" element={<PasswordSettingsPage />} />
+              <Route path="/settings/help" element={<HelpPage />} />
+              <Route path="/leaderboard" element={<LeaderboardPage />} />
+              <Route path="/reporters" element={<ReportersPage />} />
+              <Route path="/records" element={<RecordsPage />} />
+              <Route path="/achievements" element={<AchievementsPage />} />
+              <Route path="/civix-heroes" element={<CivixHeroesPage />} />
+              <Route path="/solved-issues" element={<SolvedIssuesPage />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

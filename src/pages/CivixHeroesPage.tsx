@@ -55,47 +55,46 @@ const sampleHeroes: Hero[] = [
 
 const CivixHeroesPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-        <header className="flex items-center p-4 border-b">
-          <Link to="/">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-6 w-6" />
-            </Button>
-          </Link>
-          <h1 className="text-xl font-bold ml-2">Heroes</h1>
-        </header>
-        <main className="p-6 space-y-4">
-          {sampleHeroes.map((hero) => (
-            <Card key={hero.id} className="shadow-sm hover:shadow-md transition-shadow">
-              <CardContent className="flex items-center p-4 gap-4">
-                <span className="text-xl font-bold text-gray-500 w-6 text-center">
-                  {hero.serialNo}
-                </span>
-                <Avatar className="h-14 w-14">
-                  <AvatarImage src={hero.avatarUrl} alt={hero.name} />
-                  <AvatarFallback>
-                    {hero.name.split(" ").map((n) => n[0]).join("")}
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex-1 space-y-1">
-                  <h2 className="text-lg font-semibold text-gray-800">{hero.name}</h2>
-                  <p className="text-sm text-gray-600">{hero.department}</p>
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <Phone className="h-3 w-3" />
-                    <span>{hero.contact}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <Mail className="h-3 w-3" />
-                    <span>{hero.email}</span>
-                  </div>
+    <>
+      <header className="flex items-center p-4 border-b">
+        <Link to="/">
+          <Button variant="ghost" size="icon">
+            <ArrowLeft className="h-6 w-6" />
+          </Button>
+        </Link>
+        <h1 className="text-xl font-bold ml-2">Heroes</h1>
+      </header>
+      <main className="p-6 space-y-4">
+        {sampleHeroes.map((hero) => (
+          <Card key={hero.id} className="shadow-sm hover:shadow-md transition-shadow">
+            <CardContent className="flex items-center p-4 gap-4">
+              <span className="text-xl font-bold text-gray-500 w-6 text-center">
+                {hero.serialNo}
+              </span>
+              <Avatar className="h-14 w-14">
+                <AvatarImage src={hero.avatarUrl} alt={hero.name} />
+                <AvatarFallback>
+                  {hero.name.split(" ").map((n) => n[0]).join("")}
+                </AvatarFallback>
+              </Avatar>
+              <div className="flex-1 space-y-1">
+                <h2 className="text-lg font-semibold text-gray-800">{hero.name}</h2>
+                <p className="text-sm text-gray-600">{hero.department}</p>
+                <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <Phone className="h-3 w-3" />
+                  <span>{hero.contact}</span>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </main>
-      </div>
-    </div>
+                <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <Mail className="h-3 w-3" />
+                  <span>{hero.email}</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+        <div className="pb-20 md:pb-0" />
+      </main>
+    </>
   );
 };
 

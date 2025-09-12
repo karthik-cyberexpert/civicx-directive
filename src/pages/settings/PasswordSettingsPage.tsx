@@ -46,66 +46,65 @@ const PasswordSettingsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-        <header className="flex items-center p-4 border-b">
-          <Link to="/settings">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-6 w-6" />
+    <>
+      <header className="flex items-center p-4 border-b">
+        <Link to="/settings">
+          <Button variant="ghost" size="icon">
+            <ArrowLeft className="h-6 w-6" />
+          </Button>
+        </Link>
+        <h1 className="text-xl font-bold ml-2">Password</h1>
+      </header>
+      <main className="p-6">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <FormField
+              control={form.control}
+              name="currentPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Current Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="Enter current password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="newPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>New Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="Enter new password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="confirmNewPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Confirm New Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="Confirm new password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" className="w-full">
+              Save Changes
             </Button>
-          </Link>
-          <h1 className="text-xl font-bold ml-2">Password</h1>
-        </header>
-        <main className="p-6">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="currentPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Current Password</FormLabel>
-                    <FormControl>
-                      <Input type="password" placeholder="Enter current password" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="newPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>New Password</FormLabel>
-                    <FormControl>
-                      <Input type="password" placeholder="Enter new password" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="confirmNewPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Confirm New Password</FormLabel>
-                    <FormControl>
-                      <Input type="password" placeholder="Confirm new password" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full">
-                Save Changes
-              </Button>
-            </form>
-          </Form>
-        </main>
-      </div>
-    </div>
+          </form>
+        </Form>
+        <div className="pb-20 md:pb-0" />
+      </main>
+    </>
   );
 };
 
