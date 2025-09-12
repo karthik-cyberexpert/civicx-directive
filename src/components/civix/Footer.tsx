@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-2 border-t border-gray-200 flex justify-around items-center z-50 md:hidden">
+    <footer className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-2 border-t border-gray-200 flex justify-around items-center z-50">
       <Tooltip>
         <TooltipTrigger asChild>
           <Link to="/records" className="flex flex-col items-center text-gray-600 hover:text-purple-600 transition-colors duration-200">
