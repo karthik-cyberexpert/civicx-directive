@@ -16,8 +16,7 @@ import LeaderboardPage from "./pages/LeaderboardPage";
 import ReportersPage from "./pages/ReportersPage";
 import RecordsPage from "./pages/RecordsPage";
 import AchievementsPage from "./pages/AchievementsPage";
-import CivixReporterPage from "./pages/CivixReporterPage"; // New import
-import CivixHeroesPage from "./pages/CivixHeroesPage"; // New import
+import CivixHeroesPage from "./pages/CivixHeroesPage";
 import { UserProvider } from "./context/UserContext";
 
 const queryClient = new QueryClient();
@@ -43,8 +42,7 @@ const App = () => (
             <Route path="/reporters" element={<ReportersPage />} />
             <Route path="/records" element={<RecordsPage />} />
             <Route path="/achievements" element={<AchievementsPage />} />
-            <Route path="/civix-reporter" element={<CivixReporterPage />} /> {/* New route */}
-            <Route path="/civix-heroes" element={<CivixHeroesPage />} /> {/* New route */}
+            <Route path="/civix-heroes" element={<CivixHeroesPage />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
