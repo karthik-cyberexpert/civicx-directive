@@ -8,7 +8,8 @@ import RecordsCardList from "@/components/civix/RecordsCardList";
 import { useState, useMemo } from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import AchievementsBarChart from "@/components/civix/AchievementsBarChart";
-import { format, startOfWeek, eachDayOfInterval, eachWeekOfInterval, eachMonthOfInterval, eachYearOfInterval } from "date-fns";
+import { format, startOfWeek, endOfWeek, eachDayOfInterval, eachWeekOfInterval, eachMonthOfInterval, eachYearOfInterval } from "date-fns";
+import { Card, CardContent } from "@/components/ui/card"; // Import Card and CardContent
 
 type TimeFilter = "daily" | "weekly" | "monthly" | "yearly";
 
@@ -34,23 +35,29 @@ const RecordsPage = () => {
 
     switch (filter) {
       case "daily":
-        labels = eachDayOfInterval({ start: firstDate, end: lastDate }).map(date => format(date, "MMM dd"));
+        labels = eachDayOfInterval({ start: firstDate, end: lastDate }).map(date => format(date, "dd-MM-yyyy"));
         issues.forEach(issue => {
-          const day = format(new Date(issue.reportedAt), "MMM dd");
+          const day = format(new Date(issue.reportedAt), "dd-MM-yyyy");
           counts[day] = (counts[day] || 0) + 1;
         });
         break;
       case "weekly":
-        labels = eachWeekOfInterval({ start: firstDate, end: lastDate }, { weekStartsOn: 1 }).map(date => `Week ${format(date, "w, yyyy")}`);
+        labels = eachWeekOfInterval({ start: firstDate, end: lastDate }, { weekStartsOn: 1 }).map(date => {
+          const startDate = startOfWeek(date, { weekStartsOn: 1 });
+          const endDate = endOfWeek(date, { weekStartsOn: 1 });
+          return `${format(startDate, "dd-MM-yyyy")} to ${format(endDate, "dd-MM-yyyy")}`;
+        });
         issues.forEach(issue => {
-          const week = `Week ${format(startOfWeek(new Date(issue.reportedAt), { weekStartsOn: 1 }), "w, yyyy")}`;
-          counts[week] = (counts[week] || 0) + 1;
+          const startDate = startOfWeek(new Date(issue.reportedAt), { weekStartsOn: 1 });
+          const endDate = endOfWeek(new Date(issue.reportedAt), { weekStartsOn: 1 });
+          const weekLabel = `${format(startDate, "dd-MM-yyyy")} to ${format(endDate, "dd-MM-yyyy")}`;
+          counts[weekLabel] = (counts[weekLabel] || 0) + 1;
         });
         break;
       case "monthly":
-        labels = eachMonthOfInterval({ start: firstDate, end: lastDate }).map(date => format(date, "MMM yyyy"));
+        labels = eachMonthOfInterval({ start: firstDate, end: lastDate }).map(date => format(date, "MMMM yyyy"));
         issues.forEach(issue => {
-          const month = format(new Date(issue.reportedAt), "MMM yyyy");
+          const month = format(new Date(issue.reportedAt), "MMMM yyyy");
           counts[month] = (counts[month] || 0) + 1;
         });
         break;
@@ -86,31 +93,33 @@ const RecordsPage = () => {
           <BarChartIcon className="h-5 w-5" />
         </Button>
       </header>
-      <main className="p-6 space-y-6">
+      <main className="p-6 space-y-6 max-w-4xl mx-auto">
         {showChart && (
-          <section>
-            <h2 className="text-xl font-bold mb-4">Achievements Overview</h2>
-            <ToggleGroup
-              type="single"
-              value={timeFilter}
-              onValueChange={(value: TimeFilter) => value && setTimeFilter(value)}
-              className="mb-6 justify-center"
-            >
-              <ToggleGroupItem value="daily" aria-label="Toggle daily">
-                Daily
-              </ToggleGroupItem>
-              <ToggleGroupItem value="weekly" aria-label="Toggle weekly">
-                Weekly
-              </ToggleGroupItem>
-              <ToggleGroupItem value="monthly" aria-label="Toggle monthly">
-                Monthly
-              </ToggleGroupItem>
-              <ToggleGroupItem value="yearly" aria-label="Toggle yearly">
-                Yearly
-              </ToggleGroupItem>
-            </ToggleGroup>
-            <AchievementsBarChart data={chartData} timeFilter={timeFilter} />
-          </section>
+          <Card className="shadow-sm">
+            <CardContent className="p-4">
+              <h2 className="text-xl font-bold mb-4">Achievements Overview</h2>
+              <ToggleGroup
+                type="single"
+                value={timeFilter}
+                onValueChange={(value: TimeFilter) => value && setTimeFilter(value)}
+                className="mb-6 justify-center"
+              >
+                <ToggleGroupItem value="daily" aria-label="Toggle daily">
+                  Daily
+                </ToggleGroupItem>
+                <ToggleGroupItem value="weekly" aria-label="Toggle weekly">
+                  Weekly
+                </ToggleGroupItem>
+                <ToggleGroupItem value="monthly" aria-label="Toggle monthly">
+                  Monthly
+                </ToggleGroupItem>
+                <ToggleGroupItem value="yearly" aria-label="Toggle yearly">
+                  Yearly
+                </ToggleGroupItem>
+              </ToggleGroup>
+              <AchievementsBarChart data={chartData} timeFilter={timeFilter} />
+            </CardContent>
+          </Card>
         )}
 
         <section>

@@ -14,20 +14,7 @@ interface AchievementsBarChartProps {
 }
 
 const AchievementsBarChart = ({ data, timeFilter }: AchievementsBarChartProps) => {
-  const getXAxisLabel = (filter: string) => {
-    switch (filter) {
-      case "daily":
-        return "Day";
-      case "weekly":
-        return "Week";
-      case "monthly":
-        return "Month";
-      case "yearly":
-        return "Year";
-      default:
-        return "Period";
-    }
-  };
+  // The getXAxisLabel function is no longer needed as labels are pre-formatted.
 
   return (
     <div className="h-[300px] w-full">
@@ -35,12 +22,7 @@ const AchievementsBarChart = ({ data, timeFilter }: AchievementsBarChartProps) =
         <BarChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <XAxis
             dataKey="name"
-            tickFormatter={(value) => {
-              if (timeFilter === "daily") {
-                return value.split(" ")[0]; // Show only month for daily
-              }
-              return value;
-            }}
+            tickFormatter={(value) => value} // Labels are now pre-formatted by getChartData
             angle={-45}
             textAnchor="end"
             height={80}
