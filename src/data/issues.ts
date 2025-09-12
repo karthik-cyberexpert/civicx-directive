@@ -7,6 +7,7 @@ export interface Issue {
   location: string;
   status: "Pending" | "In Progress" | "Resolved";
   reportedAt: string;
+  priority: "High" | "Medium" | "Low"; // Added priority field
 }
 
 export const sampleIssues: Issue[] = [
@@ -17,6 +18,7 @@ export const sampleIssues: Issue[] = [
     location: "Main St, near Oak Ave",
     status: "Pending",
     reportedAt: "2023-10-26T10:00:00Z",
+    priority: "High", // Assigned priority
   },
   {
     id: "2",
@@ -25,6 +27,7 @@ export const sampleIssues: Issue[] = [
     location: "123 Elm St",
     status: "In Progress",
     reportedAt: "2023-10-25T14:30:00Z",
+    priority: "Medium", // Assigned priority
   },
   {
     id: "3",
@@ -33,6 +36,7 @@ export const sampleIssues: Issue[] = [
     location: "Behind Central Park",
     status: "Pending",
     reportedAt: "2023-10-24T08:15:00Z",
+    priority: "High", // Assigned priority
   },
   {
     id: "4",
@@ -41,6 +45,7 @@ export const sampleIssues: Issue[] = [
     location: "Town Square",
     status: "Resolved",
     reportedAt: "2023-10-23T11:00:00Z",
+    priority: "Low", // Assigned priority
   },
   {
     id: "5",
@@ -49,6 +54,7 @@ export const sampleIssues: Issue[] = [
     location: "Sector 7 Community Center",
     status: "Resolved",
     reportedAt: "2023-10-22T09:00:00Z",
+    priority: "Medium", // Assigned priority
   },
   {
     id: "6",
@@ -57,6 +63,7 @@ export const sampleIssues: Issue[] = [
     location: "Railway Station Underpass",
     status: "In Progress",
     reportedAt: "2023-10-21T16:00:00Z",
+    priority: "Low", // Assigned priority
   },
 ];
 
