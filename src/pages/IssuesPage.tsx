@@ -73,16 +73,19 @@ const IssuesPage = () => {
           </Link>
           <h1 className="text-xl font-bold ml-2">Issues Received</h1>
         </header>
-        <main className="p-6 space-y-4">
+        <main className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {sampleIssues.map((issue) => (
-            <Card key={issue.id} className="shadow-sm">
+            <Card 
+              key={issue.id} 
+              className="shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-300 flex flex-col"
+            >
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <AlertCircle className="h-5 w-5 text-red-500" />
                   {issue.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2 text-sm text-gray-600">
+              <CardContent className="space-y-2 text-sm text-gray-600 flex-grow">
                 <p>{issue.description}</p>
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-gray-500" />
@@ -103,7 +106,8 @@ const IssuesPage = () => {
                 >
                   {issue.status}
                 </Badge>
-                <div className="flex gap-2 mt-4 pt-2 border-t border-gray-100">
+              </CardContent>
+              <div className="flex gap-2 mt-4 p-4 pt-2 border-t border-gray-100">
                   <Button 
                     variant="outline" 
                     size="sm" 
@@ -120,7 +124,6 @@ const IssuesPage = () => {
                     Implement
                   </Button>
                 </div>
-              </CardContent>
             </Card>
           ))}
         </main>
