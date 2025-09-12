@@ -3,6 +3,7 @@ import { ArrowLeft, MapPin, Clock, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { showSuccess } from "@/utils/toast";
 
 interface Issue {
   id: string;
@@ -49,6 +50,18 @@ const sampleIssues: Issue[] = [
 ];
 
 const IssuesPage = () => {
+  const handleAccept = (issueId: string) => {
+    console.log(`Issue ${issueId} accepted!`);
+    showSuccess(`Issue ${issueId} accepted!`);
+    // In a real app, you'd update the issue status in your state/backend
+  };
+
+  const handleImplement = (issueId: string) => {
+    console.log(`Starting implementation for issue ${issueId}!`);
+    showSuccess(`Starting implementation for issue ${issueId}!`);
+    // In a real app, you'd update the issue status in your state/backend
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto bg-white rounded-lg shadow-md overflow-hidden">
@@ -90,6 +103,23 @@ const IssuesPage = () => {
                 >
                   {issue.status}
                 </Badge>
+                <div className="flex gap-2 mt-4 pt-2 border-t border-gray-100">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => handleAccept(issue.id)}
+                    className="flex-1"
+                  >
+                    Accept
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    onClick={() => handleImplement(issue.id)}
+                    className="flex-1"
+                  >
+                    Implement
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
