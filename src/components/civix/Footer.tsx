@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Trophy, BookUser, MessageSquare } from "lucide-react";
+import { Trophy, BookUser, MessageSquare, CheckCircle } from "lucide-react"; // Import CheckCircle icon
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -49,6 +49,20 @@ const Footer = () => {
         </TooltipTrigger>
         <TooltipContent>
           <p>Feedback</p>
+        </TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Link to="/solved-issues" className="flex flex-col items-center text-gray-600 hover:text-purple-600 transition-colors duration-200">
+            <Button variant="ghost" size="icon" className="h-10 w-10">
+              <CheckCircle className="h-6 w-6" />
+            </Button>
+            <span className="text-xs mt-1">Solved</span>
+          </Link>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Solved Issues</p>
         </TooltipContent>
       </Tooltip>
     </footer>
