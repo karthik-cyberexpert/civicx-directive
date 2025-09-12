@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, BarChart as BarChartIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { sampleIssues, Issue } from "@/data/issues";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -8,13 +8,14 @@ import RecordsCardList from "@/components/civix/RecordsCardList";
 import { useState, useMemo } from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import AchievementsBarChart from "@/components/civix/AchievementsBarChart";
-import { format, startOfWeek, endOfWeek, eachDayOfInterval, eachWeekOfInterval, eachMonthOfInterval, eachYearOfInterval } from "date-fns";
+import { format, startOfWeek, eachDayOfInterval, eachWeekOfInterval, eachMonthOfInterval, eachYearOfInterval } from "date-fns";
 
 type TimeFilter = "daily" | "weekly" | "monthly" | "yearly";
 
 const RecordsPage = () => {
   const isMobile = useIsMobile();
   const [timeFilter, setTimeFilter] = useState<TimeFilter>("monthly");
+  const [showChart, setShowChart] = useState(false);
 
   const completedIssues = useMemo(
     () => sampleIssues.filter((issue) => issue.status === "Resolved"),
@@ -72,38 +73,45 @@ const RecordsPage = () => {
 
   return (
     <>
-      <header className="flex items-center p-4 border-b">
-        <Link to="/">
-          <Button variant="ghost" size="icon">
-            <ArrowLeft className="h-6 w-6" />
-          </Button>
-        </Link>
-        <h1 className="text-xl font-bold ml-2">My Records & Achievements</h1>
+      <header className="flex items-center justify-between p-4 border-b">
+        <div className="flex items-center">
+          <Link to="/">
+            <Button variant="ghost" size="icon">
+              <ArrowLeft className="h-6 w-6" />
+            </Button>
+          </Link>
+          <h1 className="text-xl font-bold ml-2">My Records & Achievements</h1>
+        </div>
+        <Button variant="outline" size="icon" onClick={() => setShowChart(!showChart)}>
+          <BarChartIcon className="h-5 w-5" />
+        </Button>
       </header>
       <main className="p-6 space-y-6">
-        <section>
-          <h2 className="text-xl font-bold mb-4">Achievements Overview</h2>
-          <ToggleGroup
-            type="single"
-            value={timeFilter}
-            onValueChange={(value: TimeFilter) => value && setTimeFilter(value)}
-            className="mb-6 justify-center"
-          >
-            <ToggleGroupItem value="daily" aria-label="Toggle daily">
-              Daily
-            </ToggleGroupItem>
-            <ToggleGroupItem value="weekly" aria-label="Toggle weekly">
-              Weekly
-            </ToggleGroupItem>
-            <ToggleGroupItem value="monthly" aria-label="Toggle monthly">
-              Monthly
-            </ToggleGroupItem>
-            <ToggleGroupItem value="yearly" aria-label="Toggle yearly">
-              Yearly
-            </ToggleGroupItem>
-          </ToggleGroup>
-          <AchievementsBarChart data={chartData} timeFilter={timeFilter} />
-        </section>
+        {showChart && (
+          <section>
+            <h2 className="text-xl font-bold mb-4">Achievements Overview</h2>
+            <ToggleGroup
+              type="single"
+              value={timeFilter}
+              onValueChange={(value: TimeFilter) => value && setTimeFilter(value)}
+              className="mb-6 justify-center"
+            >
+              <ToggleGroupItem value="daily" aria-label="Toggle daily">
+                Daily
+              </ToggleGroupItem>
+              <ToggleGroupItem value="weekly" aria-label="Toggle weekly">
+                Weekly
+              </ToggleGroupItem>
+              <ToggleGroupItem value="monthly" aria-label="Toggle monthly">
+                Monthly
+              </ToggleGroupItem>
+              <ToggleGroupItem value="yearly" aria-label="Toggle yearly">
+                Yearly
+              </ToggleGroupItem>
+            </ToggleGroup>
+            <AchievementsBarChart data={chartData} timeFilter={timeFilter} />
+          </section>
+        )}
 
         <section>
           <h2 className="text-xl font-bold mb-4">Completed Issues</h2>
