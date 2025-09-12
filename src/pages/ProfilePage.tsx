@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, User as UserIcon } from "lucide-react";
+import { ArrowLeft, User as UserIcon, Settings } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -48,9 +48,17 @@ const ProfilePage = () => {
             <span className="text-muted-foreground">Country</span>
             <span className="font-medium">{user.country}</span>
           </div>
-          <Link to="/profile/edit" className="block w-full pt-6">
-            <Button className="w-full">Edit Profile</Button>
-          </Link>
+          <div className="pt-6 space-y-2">
+            <Link to="/profile/edit" className="block w-full">
+              <Button className="w-full">Edit Profile</Button>
+            </Link>
+            <Link to="/settings" className="block w-full">
+              <Button variant="outline" className="w-full flex items-center gap-2">
+                <Settings className="h-4 w-4" />
+                <span>Settings</span>
+              </Button>
+            </Link>
+          </div>
         </div>
         <div className="pb-20 md:pb-0" />
       </main>
