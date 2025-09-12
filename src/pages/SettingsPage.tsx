@@ -58,14 +58,15 @@ const SettingsPage = () => {
             <span className="text-lg font-medium">Help</span>
             <ChevronRight className="h-5 w-5 text-gray-500" />
           </Link>
-          <Separator />
+        </div>
+        <div className="mt-8">
           <Button
-            variant="ghost"
+            variant="destructive"
             onClick={handleLogout}
-            className="w-full flex items-center justify-start py-3 px-2 rounded-md text-red-600 hover:bg-red-50 hover:text-red-700 transition-all duration-200"
+            className="w-full"
           >
-            <LogOut className="h-5 w-5 mr-3" />
-            <span className="text-lg font-medium">Log Out</span>
+            <LogOut className="h-5 w-5 mr-2" />
+            Log Out
           </Button>
         </div>
         <div className="pb-20 md:pb-0" />
