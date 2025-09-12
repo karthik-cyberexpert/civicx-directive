@@ -59,11 +59,10 @@ const SettingsPage = () => {
             <ChevronRight className="h-5 w-5 text-gray-500" />
           </Link>
         </div>
-        <div className="mt-8">
+        <div className="mt-8 flex justify-center">
           <Button
             variant="destructive"
             onClick={handleLogout}
-            className="w-full"
           >
             <LogOut className="h-5 w-5 mr-2" />
             Log Out
