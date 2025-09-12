@@ -10,13 +10,20 @@ const ProfilePage = () => {
 
   return (
     <>
-      <header className="flex items-center p-4 border-b">
-        <Link to="/">
+      <header className="flex items-center justify-between p-4 border-b">
+        <div className="flex items-center">
+          <Link to="/">
+            <Button variant="ghost" size="icon">
+              <ArrowLeft className="h-6 w-6" />
+            </Button>
+          </Link>
+          <h1 className="text-xl font-bold ml-2">Profile</h1>
+        </div>
+        <Link to="/settings">
           <Button variant="ghost" size="icon">
-            <ArrowLeft className="h-6 w-6" />
+            <Settings className="h-6 w-6" />
           </Button>
         </Link>
-        <h1 className="text-xl font-bold ml-2">Profile</h1>
       </header>
       <main className="p-6">
         <div className="flex flex-col items-center text-center">
@@ -48,15 +55,9 @@ const ProfilePage = () => {
             <span className="text-muted-foreground">Country</span>
             <span className="font-medium">{user.country}</span>
           </div>
-          <div className="pt-6 space-y-2">
-            <Link to="/profile/edit" className="block w-full">
-              <Button className="w-full">Edit Profile</Button>
-            </Link>
-            <Link to="/settings" className="block w-full">
-              <Button variant="outline" className="w-full flex items-center gap-2">
-                <Settings className="h-4 w-4" />
-                <span>Settings</span>
-              </Button>
+          <div className="pt-6 flex justify-center">
+            <Link to="/profile/edit">
+              <Button>Edit Profile</Button>
             </Link>
           </div>
         </div>
