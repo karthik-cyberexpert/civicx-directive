@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 
 const HelpPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto bg-white rounded-lg shadow-md overflow-hidden">
         <header className="flex items-center p-4 border-b">
           <Link to="/settings">
             <Button variant="ghost" size="icon">
@@ -15,9 +15,9 @@ const HelpPage = () => {
           <h1 className="text-xl font-bold ml-2">Help</h1>
         </header>
         <main className="p-6 prose max-w-none">
-          <h2 className="text-xl font-semibold mb-2">How to use Civix App</h2>
+          <h2 className="text-xl font-semibold mb-2">How to use Civicx App</h2>
           <p>
-            Welcome to Civix! This app helps you report issues in your city and
+            Welcome to Civicx! This app helps you report issues in your city and
             contribute to making it a better place.
           </p>
           <h3 className="text-lg font-semibold mt-4 mb-1">Reporting Issues</h3>
@@ -42,7 +42,7 @@ const HelpPage = () => {
             You can also find help and password options here.
           </p>
           <p className="mt-6">
-            Thank you for being a part of the Civix community!
+            Thank you for being a part of the Civicx community!
           </p>
         </main>
       </div>

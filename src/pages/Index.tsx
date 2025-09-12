@@ -12,7 +12,7 @@ import {
 const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="w-full max-w-md mx-auto bg-white">
+      <div className="container mx-auto bg-white rounded-lg shadow-md overflow-hidden">
         <Header />
         <main className="p-6 space-y-6 animate-in fade-in duration-500">
           {/* Greeting */}

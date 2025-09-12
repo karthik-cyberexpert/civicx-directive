@@ -46,8 +46,8 @@ const PasswordSettingsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto bg-white rounded-lg shadow-md overflow-hidden">
         <header className="flex items-center p-4 border-b">
           <Link to="/settings">
             <Button variant="ghost" size="icon">
