@@ -106,13 +106,6 @@ const Index = () => {
                 No active issues to display. Great job!
               </p>
             )}
-            <div className="text-center mt-6">
-              <Link to="/issues">
-                <Button variant="outline" className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4" /> View All Issues
-                </Button>
-              </Link>
-            </div>
           </section>
 
           {/* Add padding for mobile footer */}

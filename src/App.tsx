@@ -11,7 +11,6 @@ import LanguageSettingsPage from "./pages/settings/LanguageSettingsPage";
 import NotificationSettingsPage from "./pages/settings/NotificationSettingsPage";
 import PasswordSettingsPage from "./pages/settings/PasswordSettingsPage";
 import HelpPage from "./pages/settings/HelpPage";
-import IssuesPage from "./pages/IssuesPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import ReportersPage from "./pages/ReportersPage";
 import RecordsPage from "./pages/RecordsPage";
@@ -38,7 +37,6 @@ const App = () => (
             <Route path="/settings/notifications" element={<NotificationSettingsPage />} />
             <Route path="/settings/password" element={<PasswordSettingsPage />} />
             <Route path="/settings/help" element={<HelpPage />} />
-            <Route path="/issues" element={<IssuesPage />} />
             <Route path="/leaderboard" element={<LeaderboardPage />} />
             <Route path="/reporters" element={<ReportersPage />} />
             <Route path="/records" element={<RecordsPage />} />

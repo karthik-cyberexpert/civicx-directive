@@ -12,7 +12,7 @@ const SolvedIssuesPage = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto bg-white rounded-lg shadow-md overflow-hidden">
         <header className="flex items-center p-4 border-b">
-          <Link to="/issues">
+          <Link to="/">
             <Button variant="ghost" size="icon">
               <ArrowLeft className="h-6 w-6" />
             </Button>
