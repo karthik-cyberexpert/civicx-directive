@@ -10,7 +10,7 @@ import {
 const Header = () => {
   return (
     <header className="bg-white shadow-md p-2 flex justify-between items-center">
-      <h1 className="text-xl font-bold text-gray-800 pl-4">Civix</h1>
+      <h1 className="text-xl font-bold text-gray-800 pl-4">Civicx</h1>
       <div className="flex items-center gap-1">
         <Tooltip>
           <TooltipTrigger asChild>

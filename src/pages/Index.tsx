@@ -7,8 +7,6 @@ import {
   ClipboardList,
   Trophy,
   MessageSquare,
-  PenSquare,
-  Shield,
 } from "lucide-react";
 
 const Index = () => {
@@ -58,25 +56,6 @@ const Index = () => {
                 title="Feedback"
                 icon={MessageSquare}
                 href="/achievements"
-              />
-            </div>
-          </section>
-
-          {/* Civix Team Section */}
-          <section>
-            <h2 className="text-xl font-bold text-center text-gray-700 mb-4">
-              Civix Team
-            </h2>
-            <div className="grid grid-cols-2 gap-4">
-              <AchievementCard
-                title="Reporter"
-                icon={PenSquare}
-                href="/reporters"
-              />
-              <AchievementCard
-                title="Heroes"
-                icon={Shield}
-                href="/civix-heroes"
               />
             </div>
           </section>
