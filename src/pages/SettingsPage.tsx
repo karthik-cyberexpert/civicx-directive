@@ -1,9 +1,20 @@
-import { Link } from "react-router-dom";
-import { ArrowLeft, ChevronRight } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { ArrowLeft, ChevronRight, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { useUser } from "@/context/UserContext";
+import { showSuccess } from "@/utils/toast";
 
 const SettingsPage = () => {
+  const navigate = useNavigate();
+  const { logout } = useUser();
+
+  const handleLogout = () => {
+    logout();
+    showSuccess("You have been logged out successfully.");
+    navigate("/");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
@@ -48,6 +59,15 @@ const SettingsPage = () => {
               <span className="text-lg font-medium">Help</span>
               <ChevronRight className="h-5 w-5 text-gray-500" />
             </Link>
+            <Separator />
+            <Button
+              variant="ghost"
+              onClick={handleLogout}
+              className="w-full flex items-center justify-start py-3 px-2 rounded-md text-red-600 hover:bg-red-50 hover:text-red-700 transition-all duration-200"
+            >
+              <LogOut className="h-5 w-5 mr-3" />
+              <span className="text-lg font-medium">Log Out</span>
+            </Button>
           </div>
         </main>
       </div>

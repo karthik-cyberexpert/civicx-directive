@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import AchievementCard from "@/components/civix/AchievementCard";
 import Header from "@/components/civix/Header";
-import Footer from "@/components/civix/Footer";
 import {
   BookUser,
   ClipboardList,
@@ -88,7 +87,6 @@ const Index = () => {
             </div>
           </section>
         </main>
-        <Footer />
       </div>
     </div>
   );
