@@ -5,9 +5,12 @@ export interface Issue {
   title: string;
   description: string;
   location: string;
-  status: "Pending" | "In Progress" | "Resolved";
+  status: "Pending" | "In Progress" | "Resolved" | "Rejected"; // Added Rejected
   reportedAt: string;
-  priority: "High" | "Medium" | "Low"; // Added priority field
+  priority: "High" | "Medium" | "Low";
+  citizenName: string; // New field
+  issueArea: string; // New field
+  category: string; // New field
 }
 
 export const sampleIssues: Issue[] = [
@@ -16,9 +19,12 @@ export const sampleIssues: Issue[] = [
     title: "Large Pothole on Main Street",
     description: "There's a very large pothole near the intersection of Main St and Oak Ave, causing traffic hazards.",
     location: "Main St, near Oak Ave",
-    status: "Pending",
+    status: "Resolved", // Changed to Resolved for example
     reportedAt: "2023-10-26T10:00:00Z",
-    priority: "High", // Assigned priority
+    priority: "High",
+    citizenName: "Priya Sharma",
+    issueArea: "Roads",
+    category: "Infrastructure",
   },
   {
     id: "2",
@@ -27,7 +33,10 @@ export const sampleIssues: Issue[] = [
     location: "123 Elm St",
     status: "In Progress",
     reportedAt: "2023-10-25T14:30:00Z",
-    priority: "Medium", // Assigned priority
+    priority: "Medium",
+    citizenName: "Rahul Verma",
+    issueArea: "Lighting",
+    category: "Public Amenities",
   },
   {
     id: "3",
@@ -36,16 +45,22 @@ export const sampleIssues: Issue[] = [
     location: "Behind Central Park",
     status: "Pending",
     reportedAt: "2023-10-24T08:15:00Z",
-    priority: "High", // Assigned priority
+    priority: "High",
+    citizenName: "Sneha Reddy",
+    issueArea: "Waste Management",
+    category: "Sanitation",
   },
   {
     id: "4",
     title: "Damaged Public Bench",
     description: "A public bench in the town square has been broken and is unsafe to use.",
     location: "Town Square",
-    status: "Resolved",
+    status: "Rejected", // Changed to Rejected for example
     reportedAt: "2023-10-23T11:00:00Z",
-    priority: "Low", // Assigned priority
+    priority: "Low",
+    citizenName: "Amit Kumar",
+    issueArea: "Parks & Recreation",
+    category: "Public Amenities",
   },
   {
     id: "5",
@@ -54,7 +69,10 @@ export const sampleIssues: Issue[] = [
     location: "Sector 7 Community Center",
     status: "Resolved",
     reportedAt: "2023-10-22T09:00:00Z",
-    priority: "Medium", // Assigned priority
+    priority: "Medium",
+    citizenName: "Deepika Singh",
+    issueArea: "Water Supply",
+    category: "Infrastructure",
   },
   {
     id: "6",
@@ -63,7 +81,34 @@ export const sampleIssues: Issue[] = [
     location: "Railway Station Underpass",
     status: "In Progress",
     reportedAt: "2023-10-21T16:00:00Z",
-    priority: "Low", // Assigned priority
+    priority: "Low",
+    citizenName: "Arjun Das",
+    issueArea: "Public Spaces",
+    category: "Vandalism",
+  },
+  {
+    id: "7",
+    title: "Blocked Drainage System",
+    description: "Drainage system blocked near the market area causing water logging during rain.",
+    location: "Market Area",
+    status: "Pending",
+    reportedAt: "2023-10-20T11:00:00Z",
+    priority: "High",
+    citizenName: "Kavita Rao",
+    issueArea: "Drainage",
+    category: "Infrastructure",
+  },
+  {
+    id: "8",
+    title: "Missing Road Sign",
+    description: "A crucial road sign indicating a sharp turn is missing on Highway 45.",
+    location: "Highway 45, near bridge",
+    status: "Resolved",
+    reportedAt: "2023-10-19T09:00:00Z",
+    priority: "Medium",
+    citizenName: "Rajesh Kumar",
+    issueArea: "Road Safety",
+    category: "Infrastructure",
   },
 ];
 
