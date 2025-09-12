@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 interface Feedback {
@@ -54,6 +54,8 @@ const AchievementsPage = () => {
     ));
   };
 
+  const sortedFeedback = [...sampleFeedback].sort((a, b) => b.rating - a.rating);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto bg-white rounded-lg shadow-md overflow-hidden">
@@ -66,7 +68,7 @@ const AchievementsPage = () => {
           <h1 className="text-xl font-bold ml-2">Feedback</h1>
         </header>
         <main className="p-6 space-y-4">
-          {sampleFeedback.map((feedback) => (
+          {sortedFeedback.map((feedback) => (
             <Card key={feedback.id} className="shadow-sm">
               <CardContent className="p-4 space-y-3">
                 <div className="flex items-center justify-between">
