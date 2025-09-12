@@ -59,7 +59,7 @@ const SettingsPage = () => {
             <ChevronRight className="h-5 w-5 text-gray-500" />
           </Link>
         </div>
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex justify-start">
           <Button
             variant="destructive"
             onClick={handleLogout}
