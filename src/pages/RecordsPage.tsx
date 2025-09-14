@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, BarChart as BarChartIcon } from "lucide-react";
+import { ArrowLeft, BarChart as BarChartIcon, TrendingUp, Trophy, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { sampleIssues, Issue } from "@/data/issues";
 import { useIsMobile } from "@/hooks/use-mobile";
 import RecordsTable from "@/components/civix/RecordsTable";
@@ -9,7 +10,7 @@ import { useState, useMemo } from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import AchievementsBarChart from "@/components/civix/AchievementsBarChart";
 import { format, startOfWeek, endOfWeek, eachDayOfInterval, eachWeekOfInterval, eachMonthOfInterval, eachYearOfInterval } from "date-fns";
-import { Card, CardContent } from "@/components/ui/card"; // Import Card and CardContent
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type TimeFilter = "daily" | "weekly" | "monthly" | "yearly";
 
@@ -78,42 +79,121 @@ const RecordsPage = () => {
 
   const chartData = useMemo(() => getChartData(completedIssues, timeFilter), [completedIssues, timeFilter]);
 
+  const stats = [
+    {
+      icon: Trophy,
+      label: "Total Completed",
+      value: completedIssues.length,
+      color: "from-green-600 to-green-700",
+      description: "Issues resolved"
+    },
+    {
+      icon: TrendingUp,
+      label: "This Month",
+      value: "8",
+      color: "from-blue-600 to-slate-600",
+      description: "New completions"
+    },
+    {
+      icon: Calendar,
+      label: "Average Time",
+      value: "2.3 days",
+      color: "from-slate-600 to-gray-700",
+      description: "To resolution"
+    },
+  ];
+
   return (
-    <>
-      <header className="flex items-center justify-between p-4 border-b">
-        <div className="flex items-center">
-          <Link to="/">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-6 w-6" />
-            </Button>
-          </Link>
-          <h1 className="text-xl font-bold ml-2">My Records & Achievements</h1>
+    <div className="min-h-screen">
+      {/* Header */}
+      <header className="backdrop-blur-md bg-white/10 border-b border-white/20 p-4 sticky top-0 z-50">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <Link to="/">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
+                <ArrowLeft className="h-5 w-5" />
+              </Button>
+            </Link>
+            <h1 className="text-xl font-bold text-white">Records & Achievements</h1>
+          </div>
+          <Button 
+            variant="outline" 
+            size="icon" 
+            onClick={() => setShowChart(!showChart)}
+            className={`border-white/20 text-white hover:bg-white/10 transition-all duration-300 ${
+              showChart ? 'bg-white/10' : ''
+            }`}
+          >
+            <BarChartIcon className="h-5 w-5" />
+          </Button>
         </div>
-        <Button variant="outline" size="icon" onClick={() => setShowChart(!showChart)}>
-          <BarChartIcon className="h-5 w-5" />
-        </Button>
       </header>
-      <main className="p-6 space-y-6 max-w-4xl mx-auto">
+
+      <main className="p-6 space-y-8 max-w-6xl mx-auto animate-fade-in">
+        {/* Stats Overview */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {stats.map((stat, index) => (
+            <Card key={index} className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 card-hover">
+              <CardContent className="p-6">
+                <div className="flex items-center space-x-4">
+                  <div className={`p-3 rounded-xl bg-gradient-to-br ${stat.color} shadow-lg`}>
+                    <stat.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-white">{stat.value}</p>
+                    <p className="text-gray-300 text-sm">{stat.label}</p>
+                    <p className="text-gray-400 text-xs">{stat.description}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </section>
+
+        {/* Chart Section */}
         {showChart && (
-          <Card className="shadow-sm">
-            <CardContent className="p-4">
-              <h2 className="text-xl font-bold mb-4">Achievements Overview</h2>
+          <Card className="bg-white/5 border-white/10 backdrop-blur-sm animate-slide-up">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-white text-xl">Performance Overview</CardTitle>
+                <Badge className="bg-gradient-to-r from-blue-600 to-slate-600 text-white border-0">
+                  Analytics
+                </Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
               <ToggleGroup
                 type="single"
                 value={timeFilter}
                 onValueChange={(value: TimeFilter) => value && setTimeFilter(value)}
-                className="mb-6 justify-center"
+                className="justify-center bg-white/5 rounded-xl p-1"
               >
-                <ToggleGroupItem value="daily" aria-label="Toggle daily">
+                <ToggleGroupItem 
+                  value="daily" 
+                  aria-label="Toggle daily"
+                  className="data-[state=on]:bg-gradient-to-r data-[state=on]:from-blue-600 data-[state=on]:to-slate-600 data-[state=on]:text-white text-gray-300"
+                >
                   Daily
                 </ToggleGroupItem>
-                <ToggleGroupItem value="weekly" aria-label="Toggle weekly">
+                <ToggleGroupItem 
+                  value="weekly" 
+                  aria-label="Toggle weekly"
+                  className="data-[state=on]:bg-gradient-to-r data-[state=on]:from-blue-600 data-[state=on]:to-slate-600 data-[state=on]:text-white text-gray-300"
+                >
                   Weekly
                 </ToggleGroupItem>
-                <ToggleGroupItem value="monthly" aria-label="Toggle monthly">
+                <ToggleGroupItem 
+                  value="monthly" 
+                  aria-label="Toggle monthly"
+                  className="data-[state=on]:bg-gradient-to-r data-[state=on]:from-blue-600 data-[state=on]:to-slate-600 data-[state=on]:text-white text-gray-300"
+                >
                   Monthly
                 </ToggleGroupItem>
-                <ToggleGroupItem value="yearly" aria-label="Toggle yearly">
+                <ToggleGroupItem 
+                  value="yearly" 
+                  aria-label="Toggle yearly"
+                  className="data-[state=on]:bg-gradient-to-r data-[state=on]:from-blue-600 data-[state=on]:to-slate-600 data-[state=on]:text-white text-gray-300"
+                >
                   Yearly
                 </ToggleGroupItem>
               </ToggleGroup>
@@ -122,17 +202,28 @@ const RecordsPage = () => {
           </Card>
         )}
 
-        <section>
-          <h2 className="text-xl font-bold mb-4">Completed Issues</h2>
-          {isMobile ? (
-            <RecordsCardList issues={completedIssues} />
-          ) : (
-            <RecordsTable issues={completedIssues} />
-          )}
+        {/* Records Section */}
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-white">Completed Issues</h2>
+            <Badge className="bg-gradient-to-r from-green-600 to-green-700 text-white border-0">
+              {completedIssues.length} Total
+            </Badge>
+          </div>
+          
+          <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm overflow-hidden">
+            {isMobile ? (
+              <RecordsCardList issues={completedIssues} />
+            ) : (
+              <RecordsTable issues={completedIssues} />
+            )}
+          </div>
         </section>
-        <div className="pb-20 md:pb-0" />
+
+        {/* Add padding for mobile footer */}
+        <div className="pb-32 md:pb-8"></div>
       </main>
-    </>
+    </div>
   );
 };
 
